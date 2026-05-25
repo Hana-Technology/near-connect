@@ -352,7 +352,7 @@
       "description": "Hana Wallet is a powerful, yet simple-to-use cryptocurrency wallet available as both a mobile app and a desktop extension.",
       "website": "https://www.hana.money",
       "version": "1.0.0",
-      "executor": "https://raw.githubusercontent.com/hot-dao/near-selector/refs/heads/main/repository/hana.js",
+      "executor": "https://raw.githubusercontent.com/azbang/near-connect/refs/heads/main/repository/hana.js",
       "type": "sandbox",
       "platform": {
         "web": "https://www.hana.money",
