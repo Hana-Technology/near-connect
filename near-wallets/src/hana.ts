@@ -62,7 +62,7 @@ const hanaWallet = async () => {
       }
     },
 
-    async signAndSendTransaction({ receiverId, actions }: { receiverId: string; actions: ConnectorAction[] }) {
+    async signAndSendTransaction({ receiverId, actions }: any) {
       await checkExist();
 
       const [{ accountId }] = await this.getAccounts();
@@ -70,8 +70,7 @@ const hanaWallet = async () => {
       if (!receiverId) throw new Error("Receiver ID is required");
 
       try {
-        const nearActions = connectorActionsToNearActions(actions);
-        const { txHash } = await hana("signAndSendTransaction", receiverId, nearActions);
+        const { txHash } = await hana("signAndSendTransaction", receiverId, actions);
         if (!txHash) throw new Error("No transaction hash received");
 
         return await provider.txStatus(txHash, "unused", "NONE");
