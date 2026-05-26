@@ -1,7 +1,3 @@
-// TODO: replace `icon` in repository/manifest.json with a vendor-hosted asset
-// once the Hana team provides a hana.money-hosted icon URL. Current URL points
-// at the Chrome Web Store CDN and is fragile to extension republish / CDN ID rotation.
-
 import { ConnectorAction } from "./utils/action";
 import { NearRpc } from "./utils/rpc";
 

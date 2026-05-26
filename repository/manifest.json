@@ -348,7 +348,7 @@
     {
       "id": "hana-wallet",
       "name": "Hana Wallet",
-      "icon": "https://lh3.googleusercontent.com/sS35MenCNWhb_6Qv3lqdIsAfpxH0i7VhxMR3XNYqGswnkOYepaRmHiNzEiTyY_4ZiW0b650eyz4Wz1Sup6OYKKS6yB4=s120",
+      "icon": "https://res.cloudinary.com/reliantnode/image/upload/v1779783598/hana/token-logos/Hana_Icon.svg",
       "description": "Hana Wallet is a powerful, yet simple-to-use cryptocurrency wallet available as both a mobile app and a desktop extension.",
       "website": "https://www.hana.money",
       "version": "1.0.0",
