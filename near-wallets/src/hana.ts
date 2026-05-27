@@ -89,7 +89,7 @@ const hanaWallet = async () => {
     },
 
     // Sequential because the Hana extension has no batch endpoint. Each transaction
-    // triggers its own approval popup. Track follow-up in hana-extension PR #263.
+    // triggers its own approval popup.
     async signAndSendTransactions({ transactions }: { transactions: Array<{ receiverId: string; actions: ConnectorAction[] }> }) {
       await checkExist();
 
