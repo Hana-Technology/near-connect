@@ -88,11 +88,27 @@ const hanaWallet = async () => {
       }
     },
 
-    // Sequential because the Hana extension has no batch endpoint. Each transaction
-    // triggers its own approval popup.
     async signAndSendTransactions({ transactions }: { transactions: Array<{ receiverId: string; actions: ConnectorAction[] }> }) {
       await checkExist();
+      if (transactions.length === 0) return [];
 
+      // `external` resolves to undefined for a method the wallet does not expose, so this
+      // probe costs one message and never prompts the user.
+      const capabilities = await hana("capabilities");
+
+      if (capabilities?.batchTransactions) {
+        try {
+          const { hashes } = await hana("signAndSendTransactions", transactions);
+          if (!hashes?.length) throw new Error("No transaction hashes received");
+
+          return await Promise.all(hashes.map((hash: string) => provider.txStatus(hash, "unused", "NONE")));
+        } catch (error) {
+          console.error("hanaWallet.signAndSendTransactions", error);
+          throw new Error("Sign error", { cause: error });
+        }
+      }
+
+      // Older wallet builds have no batch endpoint: one approval popup per transaction.
       const results = [];
       for (let i = 0; i < transactions.length; i++) {
         try {
